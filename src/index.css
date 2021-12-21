@@ -1,0 +1,10 @@
+@import url(./vendor/normalize.css);
+@import url(./vendor/fonts/Inter/inter.css);
+
+body {
+  font-family: Inter, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,43 @@
+.form {
+  padding: 16px 0;
+}
+
+.form__input {
+  margin-right: 8px;
+  background: #ffffff;
+  border: 1px solid #dde2e4;
+  box-sizing: border-box;
+  border-radius: 6px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: -0.006em;
+  color: #9aa6ac;
+  padding: 4px 12px 4px 34px;
+  width: 256px;
+  height: 32px;
+  background: url(../../images/search.svg) no-repeat 8px/16px;
+}
+
+.form__sumbit {
+  background: #4094f7;
+  border-radius: 6px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: -0.006em;
+  color: #f6f8f9;
+  border: none;
+  width: 71px;
+  height: 32px;
+  transition: all .7s;
+}
+
+.form__sumbit:hover {
+  cursor: pointer;
+  opacity: .8;
+  transform: scale(1.05)
+}

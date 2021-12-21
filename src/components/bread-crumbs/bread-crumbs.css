@@ -1,0 +1,17 @@
+.bread-crumbs__list {
+  margin: 0;
+  padding: 0;
+}
+
+.bread-crumbs__item {
+  list-style-type: none;
+}
+
+.bread-crumbs__link {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  color: #252c32;
+  text-decoration: none;
+}

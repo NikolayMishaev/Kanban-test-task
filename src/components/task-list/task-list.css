@@ -1,0 +1,24 @@
+.task-list {
+  background: #f6f8f9;
+  border-radius: 6px 6px 0px 0px;
+  padding: 12px 8px 51px;
+}
+
+.task-list__title {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0.006em;
+  text-transform: uppercase;
+  color: #6e7c87;
+  padding: 0 0 8px 8px;
+  margin: 0;
+}
+
+.task-list__list {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  row-gap: 8px;
+}
