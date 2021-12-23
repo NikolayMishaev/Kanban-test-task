@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 
 import "./app.css";
@@ -16,6 +16,9 @@ export default function App() {
 
   const [searchValue, setSearchValue] = useState("");
 
+  const [currentDragCard, setCurrentDragCard] = useState({})
+  const [currentDropCard, setCurrentDropCard] = useState({})
+
   const [data, setData] = useState([
     {
       id: 1,
@@ -31,7 +34,7 @@ export default function App() {
         },
         {
           id: "BC–14",
-          title: "Задача № 1",
+          title: "Задача № 2",
           description:
             "As a translator, I want integrate Crowdin webhook to notify translators about changed strings",
           storyPoints: 2,
@@ -39,7 +42,7 @@ export default function App() {
         },
         {
           id: "BC–11",
-          title: "Задача № 1",
+          title: "Задача № 3",
           description:
             "As a translator, I want integrate Crowdin webhook to notify translators about changed strings",
           storyPoints: 2,
@@ -47,7 +50,7 @@ export default function App() {
         },
         {
           id: "FC-9",
-          title: "Задача № 1",
+          title: "Задача № 4",
           description:
             "As a translator, I want integrate Crowdin webhook to notify translators about changed strings",
           storyPoints: 2,
@@ -55,7 +58,7 @@ export default function App() {
         },
         {
           id: "FC-8",
-          title: "Задача № 1",
+          title: "Задача № 5",
           description:
             "As a translator, I want integrate Crowdin webhook to notify translators about changed strings",
           storyPoints: 2,
@@ -69,14 +72,14 @@ export default function App() {
       cards: [
         {
           id: "MAR-10",
-          title: "Задача № 2",
+          title: "Задача № 6",
           description: "Описание задачи 2",
           storyPoints: 3,
           priority: "major",
         },
         {
           id: "MAR-11",
-          title: "Задача № 2",
+          title: "Задача № 7",
           description: "Описание задачи 2",
           storyPoints: 3,
           priority: "unkown",
@@ -89,14 +92,14 @@ export default function App() {
       cards: [
         {
           id: "MAR-12",
-          title: "Задача № 2",
+          title: "Задача № 8",
           description: "Описание задачи 2",
           storyPoints: 3,
           priority: "minor",
         },
         {
           id: "MAR-13",
-          title: "Задача № 2",
+          title: "Задача № 9",
           description: "Описание задачи 2",
           storyPoints: 3,
           priority: "major",
@@ -109,14 +112,14 @@ export default function App() {
       cards: [
         {
           id: "MAR-14",
-          title: "Задача № 2",
+          title: "Задача № 10",
           description: "Описание задачи 2",
           storyPoints: 3,
           priority: "minor",
         },
         {
           id: "MAR-15",
-          title: "Задача № 2",
+          title: "Задача № 11",
           description: "Описание задачи 2",
           storyPoints: 3,
           priority: "normal",
@@ -127,7 +130,7 @@ export default function App() {
 
   const [currentCard, setCurrentCard] = useState({
     id: "MAR-15",
-    title: "Задача № 2",
+    title: "Задача № 12",
     description: "Описание задачи 2",
     storyPoints: 3,
     priority: "normal",
@@ -135,6 +138,12 @@ export default function App() {
   });
 
   const [currentBreadCrumbs, setCurrentBreadCrumbs] = useState("");
+
+  useEffect(() => {
+if (currentDropCard.id && currentDropCard.id) {
+  changeOrderCards();
+}
+  }, [currentDragCard, currentDropCard]);
 
   const changeBreadCrumbs = (value) => {
     setCurrentBreadCrumbs(value);
@@ -219,6 +228,27 @@ export default function App() {
     changeBreadCrumbs("");
   };
 
+const changeOrderCards = () => {
+  setData((state) =>
+  state.map((i) => {
+    if (i.status === currentDragCard.status) {
+      const newCards = i.cards.map((j) =>
+        j.id === currentDragCard.id ? { ...currentDropCard } : j
+      );
+      console.log(newCards)
+      return { ...i, cards: newCards };
+    } else     if (i.status === currentDropCard.status) {
+      const newCards = i.cards.map((j) =>
+        j.id === currentDropCard.id ? { ...currentDragCard } : j
+      );
+      return { ...i, cards: newCards };
+    } else return i;
+  })
+);
+setCurrentDragCard({})
+setCurrentDropCard({})
+}
+
   const visibleData = filterCards();
 
   return (
@@ -251,6 +281,9 @@ export default function App() {
                     {...i}
                     onCardClick={onCardClick}
                     changeBreadCrumbs={changeBreadCrumbs}
+                    changeOrderCards={changeOrderCards}
+                    currentDragCard={setCurrentDragCard}
+                    currentDropCard={setCurrentDropCard}
                   />
                 ))}
               </section>

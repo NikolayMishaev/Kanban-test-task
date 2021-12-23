@@ -10,6 +10,10 @@
   align-items: center;
 }
 
+.task-card:hover {
+  cursor: move;
+}
+
 .task-card__link {
   text-decoration-line: none;
   transition: all .5s;
