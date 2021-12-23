@@ -140,7 +140,7 @@ export default function App() {
   const [currentBreadCrumbs, setCurrentBreadCrumbs] = useState("");
 
   useEffect(() => {
-    if (currentDropCard.id && currentDropCard.id) {
+    if (currentDropCard.status && currentDropCard.status) {
       changeOrderCards();
     }
   }, [currentDragCard, currentDropCard]);
@@ -247,6 +247,7 @@ export default function App() {
         }
         if (i.status === currentDropCard.status) {
           const currentCards = newCards || i.cards;
+          // const lastCard = currentDropCard.indexCard === currentCards.length-1 ? 1 : 0;
           newCards = [
             ...currentCards.slice(0, currentDropCard.indexCard),
             currentDragCard,

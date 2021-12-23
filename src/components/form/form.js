@@ -5,14 +5,18 @@ import "./form.css";
 
 import Button from "../button/button";
 
-export default function Form({ place, newDataCard, currentCard = {}, handleSearchValue }) {
-
+export default function Form({
+  place,
+  newDataCard,
+  currentCard = {},
+  handleSearchValue,
+}) {
   const navigate = useNavigate();
 
   const [isValid, setIsValid] = useState(currentCard.title || false);
 
   const [formValues, setFormValues] = useState({
-    ...currentCard
+    ...currentCard,
   });
 
   const handleFields = (e) => {
@@ -26,25 +30,34 @@ export default function Form({ place, newDataCard, currentCard = {}, handleSearc
 
   const handleFormSubmitCreateCard = (e) => {
     e.preventDefault();
-      newDataCard(formValues);
-      navigate("/");
+    newDataCard(formValues);
+    navigate("/");
   };
 
-const handleFormSubmitSearch = (e) => {
-  e.preventDefault();
-   handleSearchValue(formValues.search)
-}
+  const handleFormSubmitSearch = (e) => {
+    e.preventDefault();
+    handleSearchValue(formValues.search);
+  };
 
   return (
     <>
       {place === "search" && (
         <form className="form" onSubmit={handleFormSubmitSearch}>
-          <input className="form__input search__input" type="text" name="search" value={formValues.search || ''} onChange={handleFields}></input>
+          <input
+            className="form__input search__input"
+            type="text"
+            name="search"
+            value={formValues.search || ""}
+            onChange={handleFields}
+          ></input>
           <Button name="Search" className="search__button" type="submit" />
         </form>
       )}
       {place === "create-card" && (
-        <form className="form create-card__form" onSubmit={handleFormSubmitCreateCard}>
+        <form
+          className="form create-card__form"
+          onSubmit={handleFormSubmitCreateCard}
+        >
           <input
             className="form__input create-card__input"
             type="text"
@@ -53,7 +66,7 @@ const handleFormSubmitSearch = (e) => {
             onChange={handleFields}
             name="title"
             maxLength={100}
-            value={formValues.title || ''}
+            value={formValues.title || ""}
           ></input>
           <select
             className={`form__select create-card__select ${
@@ -99,7 +112,7 @@ const handleFormSubmitSearch = (e) => {
             placeholder="Story points"
             onChange={handleFields}
             name="storyPoints"
-            value={formValues.storyPoints || ''}
+            value={formValues.storyPoints || ""}
           ></input>
           <select
             className={`form__select create-card__select ${
@@ -140,9 +153,14 @@ const handleFormSubmitSearch = (e) => {
             onChange={handleFields}
             name="description"
             maxLength={300}
-            value={formValues.description || ''}
+            value={formValues.description || ""}
           ></textarea>
-          <Button isValid={isValid} name="Save" className="create-card__button" type="submit" />
+          <Button
+            isValid={isValid}
+            name="Save"
+            className="create-card__button"
+            type="submit"
+          />
         </form>
       )}
     </>

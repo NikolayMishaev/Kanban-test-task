@@ -42,13 +42,12 @@
 
 .create-card__select_active {
   text-transform: uppercase;
-  color: #252C32;
+  color: #252c32;
 }
 
 .create-card__option {
   text-transform: uppercase;
 }
-
 
 .create-card__textarea {
   resize: none;

@@ -17,19 +17,19 @@
 .bread-crumbs__link {
   padding: 0 4px;
   text-decoration: none;
-  color: #6E7C87;
-  transition: all .5s;
+  color: #6e7c87;
+  transition: all 0.5s;
 }
 
 .bread-crumbs__link:hover {
-  opacity: .8;
+  opacity: 0.8;
   transform: scale(1.05);
 }
 
 .bread-crumbs__text {
   padding: 0 4px;
   margin: 0;
-  color: #252C32;
+  color: #252c32;
 }
 
 .bread-crumbs__divisor {

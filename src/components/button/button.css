@@ -9,13 +9,13 @@
   letter-spacing: -0.006em;
   color: #f6f8f9;
   border: none;
-  transition: all .7s;
+  transition: all 0.7s;
 }
 
 .button:hover {
   cursor: pointer;
-  opacity: .8;
-  transform: scale(1.05)
+  opacity: 0.8;
+  transform: scale(1.05);
 }
 
 .button_disabled {
@@ -25,5 +25,5 @@
 .button_disabled:hover {
   cursor: auto;
   opacity: 1;
-  transform: scale(1)
+  transform: scale(1);
 }

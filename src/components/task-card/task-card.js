@@ -14,6 +14,7 @@ export default function TaskCard({
   indexCard,
   currentDragCard,
   currentDropCard,
+  empty,
 }) {
   const handleCardClick = () => {
     onCardClick({ id, title, description, storyPoints, priority, status });
@@ -22,14 +23,12 @@ export default function TaskCard({
 
   const handleDragOver = (e) => {
     e.preventDefault();
-    if (e.target.className === "task-card")
-      e.target.style.boxShadow = "0 2px 2px red";
+    e.target.closest(".task-card").style.boxShadow = "0 2px 2px red";
   };
 
   const handleDragLeave = (e) => {
-    if (e.target.className === "task-card")
-      e.target.style.boxShadow =
-        "0px 0px 1px rgba(26, 32, 36, 0.32), 0px 1px 2px rgba(91, 104, 113, 0.32)";
+    e.target.closest(".task-card").style.boxShadow =
+      "0px 0px 1px rgba(26, 32, 36, 0.32), 0px 1px 2px rgba(91, 104, 113, 0.32)";
   };
 
   const handleDragStart = (e) => {
@@ -45,9 +44,8 @@ export default function TaskCard({
   };
 
   const handleDragEnd = (e) => {
-    if (e.target.className === "task-card")
-      e.target.style.boxShadow =
-        "0px 0px 1px rgba(26, 32, 36, 0.32), 0px 1px 2px rgba(91, 104, 113, 0.32)";
+    e.target.closest(".task-card").style.boxShadow =
+      "0px 0px 1px rgba(26, 32, 36, 0.32), 0px 1px 2px rgba(91, 104, 113, 0.32)";
   };
 
   const handleDrop = (e) => {
@@ -61,14 +59,14 @@ export default function TaskCard({
       status,
       indexCard,
     });
-    if (e.target.className === "task-card")
-      e.target.style.boxShadow =
-        "0px 0px 1px rgba(26, 32, 36, 0.32), 0px 1px 2px rgba(91, 104, 113, 0.32)";
+
+    e.target.closest(".task-card").style.boxShadow =
+      "0px 0px 1px rgba(26, 32, 36, 0.32), 0px 1px 2px rgba(91, 104, 113, 0.32)";
   };
 
   return (
     <li
-      className="task-card"
+      className={`task-card ${empty ? "task-card_transparent" : ""}`}
       draggable={true}
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}

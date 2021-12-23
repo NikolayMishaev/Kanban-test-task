@@ -2,6 +2,7 @@
   background: #f6f8f9;
   border-radius: 6px 6px 0px 0px;
   padding: 12px 8px 51px;
+  position: relative;
 }
 
 .task-list__title {

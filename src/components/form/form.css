@@ -13,7 +13,7 @@
   font-size: 14px;
   line-height: 24px;
   letter-spacing: -0.006em;
-  color: #252C32;
+  color: #252c32;
 }
 
 .form__input::placeholder {
@@ -40,11 +40,11 @@
 
 .form__textarea {
   font-style: normal;
-font-weight: normal;
-font-size: 14px;
-line-height: 24px;
-letter-spacing: -0.006em;
-color: #252C32;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: -0.006em;
+  color: #252c32;
 }
 
 .form__textarea::placeholder {
@@ -53,14 +53,14 @@ color: #252C32;
   font-size: 14px;
   line-height: 24px;
   letter-spacing: -0.006em;
-  color: #9AA6AC;
+  color: #9aa6ac;
 }
 
 .form__option {
   font-style: normal;
-font-weight: normal;
-font-size: 14px;
-line-height: 24px;
-letter-spacing: -0.006em;
-color: #252C32;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: -0.006em;
+  color: #252c32;
 }
