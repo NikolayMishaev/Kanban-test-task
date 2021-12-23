@@ -2,14 +2,17 @@ import "./task-list.css";
 
 import TaskCard from "../task-card/task-card";
 
-export default function TaskList({prop}) {
+export default function TaskList({ onCardClick, status, cards, changeBreadCrumbs}) {
   return (
     <div className="task-list">
-      <h2 className="task-list__title">{prop.status}</h2>
+      <h2 className="task-list__title">{status}</h2>
       <ul className="task-list__list">
-        {prop.cards.map(i=>(<TaskCard
+        {cards.map(i=>(<TaskCard
         key={i.id}
-        prop={i}
+        {...i}
+        onCardClick={onCardClick}
+        status={status}
+        changeBreadCrumbs={changeBreadCrumbs}
         />))}
       </ul>
     </div>

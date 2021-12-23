@@ -1,0 +1,62 @@
+.create-card__button {
+  background: #4094f7;
+  width: 57px;
+  height: 32px;
+  margin-top: 22px;
+}
+
+.create-card__input {
+  width: 100%;
+  height: 32px;
+  padding: 4px 36px 4px 10px;
+  margin: 22px 0 0;
+}
+
+.create-card__input_narrow {
+  width: 125px;
+  padding-right: 10px;
+  margin: 22px 10px;
+  text-align: center;
+}
+
+.create-card__form {
+  max-width: 535px;
+  padding: 0;
+}
+
+.create-card__select {
+  min-width: 125px;
+  height: 32px;
+  background: #ffffff;
+  border: 1px solid #dde2e4;
+  box-sizing: border-box;
+  border-radius: 6px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: -0.006em;
+  color: #9aa6ac;
+  padding: 4px 10px;
+}
+
+.create-card__select_active {
+  text-transform: uppercase;
+  color: #252C32;
+}
+
+.create-card__option {
+  text-transform: uppercase;
+}
+
+
+.create-card__textarea {
+  resize: none;
+  width: 535px;
+  height: 122px;
+  background: #ffffff;
+  border: 1px solid #dde2e4;
+  box-sizing: border-box;
+  border-radius: 6px;
+  padding: 4px 10px;
+}

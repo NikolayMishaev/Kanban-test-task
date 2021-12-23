@@ -1,17 +1,39 @@
 .bread-crumbs__list {
   margin: 0;
   padding: 0;
-}
-
-.bread-crumbs__item {
-  list-style-type: none;
-}
-
-.bread-crumbs__link {
+  display: flex;
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
   line-height: 16px;
   color: #252c32;
+}
+
+.bread-crumbs__item {
+  list-style-type: none;
+  display: flex;
+}
+
+.bread-crumbs__link {
+  padding: 0 4px;
   text-decoration: none;
+  color: #6E7C87;
+  transition: all .5s;
+}
+
+.bread-crumbs__link:hover {
+  opacity: .8;
+  transform: scale(1.05);
+}
+
+.bread-crumbs__text {
+  padding: 0 4px;
+  margin: 0;
+  color: #252C32;
+}
+
+.bread-crumbs__divisor {
+  background: url(../../images/bread-crumbs-divisor.svg) no-repeat center/60%;
+  width: 12px;
+  height: 16px;
 }

@@ -43,3 +43,15 @@
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 10px;
 }
+
+.heading {
+  padding-top: 12px;
+  display: flex;
+}
+
+.heading__button {
+  background: #f2994a;
+  width: 93px;
+  height: 32px;
+  margin-left: 27px;
+}

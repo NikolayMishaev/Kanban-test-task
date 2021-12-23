@@ -10,6 +10,16 @@
   align-items: center;
 }
 
+.task-card__link {
+  text-decoration-line: none;
+  transition: all .5s;
+}
+
+.task-card__link:hover {
+  opacity: .8;
+  transform: scale(1.05);
+}
+
 .task-card__title {
   margin: 0;
   width: 100%;
@@ -21,7 +31,7 @@ letter-spacing: -0.006em;
 color: #252C32;
 }
 
-.task-card__subtitle {
+.task-card__description {
   margin: 12px 0;
   width: 100%;
   font-style: normal;

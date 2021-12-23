@@ -13,31 +13,54 @@
   font-size: 14px;
   line-height: 24px;
   letter-spacing: -0.006em;
+  color: #252C32;
+}
+
+.form__input::placeholder {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: -0.006em;
   color: #9aa6ac;
-  padding: 4px 12px 4px 34px;
+}
+
+.search__input {
   width: 256px;
   height: 32px;
   background: url(../../images/search.svg) no-repeat 8px/16px;
+  padding: 4px 12px 4px 34px;
 }
 
-.form__sumbit {
+.search__button {
   background: #4094f7;
-  border-radius: 6px;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 24px;
-  text-align: center;
-  letter-spacing: -0.006em;
-  color: #f6f8f9;
-  border: none;
   width: 71px;
   height: 32px;
-  transition: all .7s;
 }
 
-.form__sumbit:hover {
-  cursor: pointer;
-  opacity: .8;
-  transform: scale(1.05)
+.form__textarea {
+  font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 24px;
+letter-spacing: -0.006em;
+color: #252C32;
+}
+
+.form__textarea::placeholder {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: -0.006em;
+  color: #9AA6AC;
+}
+
+.form__option {
+  font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 24px;
+letter-spacing: -0.006em;
+color: #252C32;
 }
