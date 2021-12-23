@@ -16,8 +16,8 @@ export default function App() {
 
   const [searchValue, setSearchValue] = useState("");
 
-  const [currentDragCard, setCurrentDragCard] = useState({})
-  const [currentDropCard, setCurrentDropCard] = useState({})
+  const [currentDragCard, setCurrentDragCard] = useState({});
+  const [currentDropCard, setCurrentDropCard] = useState({});
 
   const [data, setData] = useState([
     {
@@ -140,9 +140,9 @@ export default function App() {
   const [currentBreadCrumbs, setCurrentBreadCrumbs] = useState("");
 
   useEffect(() => {
-if (currentDropCard.id && currentDropCard.id) {
-  changeOrderCards();
-}
+    if (currentDropCard.id && currentDropCard.id) {
+      changeOrderCards();
+    }
   }, [currentDragCard, currentDropCard]);
 
   const changeBreadCrumbs = (value) => {
@@ -228,26 +228,37 @@ if (currentDropCard.id && currentDropCard.id) {
     changeBreadCrumbs("");
   };
 
-const changeOrderCards = () => {
-  setData((state) =>
-  state.map((i) => {
-    if (i.status === currentDragCard.status) {
-      const newCards = i.cards.map((j) =>
-        j.id === currentDragCard.id ? { ...currentDropCard } : j
-      );
-      console.log(newCards)
-      return { ...i, cards: newCards };
-    } else     if (i.status === currentDropCard.status) {
-      const newCards = i.cards.map((j) =>
-        j.id === currentDropCard.id ? { ...currentDragCard } : j
-      );
-      return { ...i, cards: newCards };
-    } else return i;
-  })
-);
-setCurrentDragCard({})
-setCurrentDropCard({})
-}
+  const changeOrderCards = () => {
+    if (currentDropCard.id === currentDragCard.id) {
+      setCurrentDragCard({});
+      setCurrentDropCard({});
+      return;
+    }
+    setData((state) =>
+      state.map((i) => {
+        let newCards;
+        if (i.status === currentDragCard.status) {
+          newCards = i.cards.filter((j) => j.id !== currentDragCard.id);
+          if (i.status !== currentDropCard.status)
+            return {
+              ...i,
+              cards: newCards,
+            };
+        }
+        if (i.status === currentDropCard.status) {
+          const currentCards = newCards || i.cards;
+          newCards = [
+            ...currentCards.slice(0, currentDropCard.indexCard),
+            currentDragCard,
+            ...currentCards.slice(currentDropCard.indexCard),
+          ];
+          return { ...i, cards: [...newCards] };
+        } else return i;
+      })
+    );
+    setCurrentDragCard({});
+    setCurrentDropCard({});
+  };
 
   const visibleData = filterCards();
 

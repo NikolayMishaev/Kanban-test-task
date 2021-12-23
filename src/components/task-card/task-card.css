@@ -10,17 +10,21 @@
   align-items: center;
 }
 
+/* .task-card_drag {
+  box-shadow: 0 2px 2px red;
+} */
+
 .task-card:hover {
   cursor: move;
 }
 
 .task-card__link {
   text-decoration-line: none;
-  transition: all .5s;
+  transition: all 0.5s;
 }
 
 .task-card__link:hover {
-  opacity: .8;
+  opacity: 0.8;
   transform: scale(1.05);
 }
 
@@ -28,11 +32,11 @@
   margin: 0;
   width: 100%;
   font-style: normal;
-font-weight: bold;
-font-size: 18px;
-line-height: 22px;
-letter-spacing: -0.006em;
-color: #252C32;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: -0.006em;
+  color: #252c32;
 }
 
 .task-card__description {
