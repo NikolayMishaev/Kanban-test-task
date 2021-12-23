@@ -28,15 +28,14 @@ export default function App() {
           id: "FC-7",
           title: "Задача № 1",
           description:
-            "As a translator, I want integrate Crowdin webhook to notify translators about changed strings",
+            "При поиске при отсутствии результата, выводить сообщение с текстом: 'по указанному запросу данные не найдены' ",
           storyPoints: 2,
           priority: "major",
         },
         {
           id: "BC–14",
           title: "Задача № 2",
-          description:
-            "As a translator, I want integrate Crowdin webhook to notify translators about changed strings",
+          description: "Добавить ф-ию дебоунс к поиску и к драг дропу",
           storyPoints: 2,
           priority: "unkown",
         },
@@ -44,15 +43,14 @@ export default function App() {
           id: "BC–11",
           title: "Задача № 3",
           description:
-            "As a translator, I want integrate Crowdin webhook to notify translators about changed strings",
+            "Добавить возможность добавления задачи в конец при перетаскивании",
           storyPoints: 2,
           priority: "unkown",
         },
         {
           id: "FC-9",
           title: "Задача № 4",
-          description:
-            "As a translator, I want integrate Crowdin webhook to notify translators about changed strings",
+          description: "Сделать возможным добавления задачи в пустой контейнер",
           storyPoints: 2,
           priority: "critical",
         },
@@ -60,7 +58,7 @@ export default function App() {
           id: "FC-8",
           title: "Задача № 5",
           description:
-            "As a translator, I want integrate Crowdin webhook to notify translators about changed strings",
+            "При редактировании данных карточки, если менять статус, то ничего не происходит. Нужно удалить из контейнера с текущим статусом и добавить в контейнер с новым статусом",
           storyPoints: 2,
           priority: "major",
         },
@@ -73,14 +71,14 @@ export default function App() {
         {
           id: "MAR-10",
           title: "Задача № 6",
-          description: "Описание задачи 2",
+          description: "Доработать внешний вид компонента просмотра карточки",
           storyPoints: 3,
           priority: "major",
         },
         {
           id: "MAR-11",
           title: "Задача № 7",
-          description: "Описание задачи 2",
+          description: "Стилизовать селекты",
           storyPoints: 3,
           priority: "unkown",
         },
@@ -93,14 +91,15 @@ export default function App() {
         {
           id: "MAR-12",
           title: "Задача № 8",
-          description: "Описание задачи 2",
+          description: "Добавить кастомную валидацию полей",
           storyPoints: 3,
           priority: "minor",
         },
         {
           id: "MAR-13",
           title: "Задача № 9",
-          description: "Описание задачи 2",
+          description:
+            "Создать стейт для хлебных крошек, передавать текущий путь",
           storyPoints: 3,
           priority: "major",
         },
@@ -113,29 +112,45 @@ export default function App() {
         {
           id: "MAR-14",
           title: "Задача № 10",
-          description: "Описание задачи 2",
+          description: "При поиске не учитывать регистр",
           storyPoints: 3,
           priority: "minor",
         },
         {
           id: "MAR-15",
           title: "Задача № 11",
-          description: "Описание задачи 2",
+          description:
+            "При драг дропе, установить тень текущего элемента через closest, чтобы она не пропадала при наведении на элемент карточки",
           storyPoints: 3,
           priority: "normal",
+        },
+        {
+          id: "MAR-20",
+          title: "Задача № 12",
+          description:
+            "Временной решение с уникальным айди, найти библиотеку с генерацией уникальных ключей",
+          storyPoints: 4,
+          priority: "major",
+        },
+        {
+          id: "MAR-21",
+          title: "Задача № 13",
+          description: "Фильтрация через новый стейт или динамическая",
+          storyPoints: 3,
+          priority: "critical",
+        },
+        {
+          id: "MAR-22",
+          title: "Задача № 14",
+          description: "Добавить возможность удаления карточек",
+          storyPoints: 2,
+          priority: "minor",
         },
       ],
     },
   ]);
 
-  const [currentCard, setCurrentCard] = useState({
-    id: "MAR-15",
-    title: "Задача № 12",
-    description: "Описание задачи 2",
-    storyPoints: 3,
-    priority: "normal",
-    status: "done",
-  });
+  const [currentCard, setCurrentCard] = useState({});
 
   const [currentBreadCrumbs, setCurrentBreadCrumbs] = useState("");
 
@@ -183,7 +198,7 @@ export default function App() {
   };
 
   const handleSearchValue = (searchValue) => {
-    setSearchValue(searchValue);
+    setSearchValue(searchValue.toLowerCase());
   };
 
   const filterCards = () => {
@@ -192,7 +207,9 @@ export default function App() {
         id: i.id,
         status: i.status,
         cards: i.cards.filter(
-          (j) => j.id.includes(searchValue) || j.title.includes(searchValue)
+          (j) =>
+            j.id.toLowerCase().includes(searchValue) ||
+            j.title.toLowerCase().includes(searchValue)
         ),
       }));
     } else return data;
@@ -293,7 +310,6 @@ export default function App() {
                     {...i}
                     onCardClick={onCardClick}
                     changeBreadCrumbs={changeBreadCrumbs}
-                    changeOrderCards={changeOrderCards}
                     currentDragCard={setCurrentDragCard}
                     currentDropCard={setCurrentDropCard}
                   />

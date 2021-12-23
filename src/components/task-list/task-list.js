@@ -7,7 +7,6 @@ export default function TaskList({
   status,
   cards,
   changeBreadCrumbs,
-  changeOrderCards,
   currentDragCard,
   currentDropCard,
 }) {
@@ -24,7 +23,6 @@ export default function TaskList({
               status={status}
               changeBreadCrumbs={changeBreadCrumbs}
               indexCard={c}
-              changeOrderCards={changeOrderCards}
               currentDragCard={currentDragCard}
               currentDropCard={currentDropCard}
             />
@@ -33,10 +31,7 @@ export default function TaskList({
           <TaskCard
             key={"zero"}
             empty={true}
-            onCardClick={onCardClick}
             status={status}
-            changeBreadCrumbs={changeBreadCrumbs}
-            changeOrderCards={changeOrderCards}
             currentDragCard={currentDragCard}
             currentDropCard={currentDropCard}
           />

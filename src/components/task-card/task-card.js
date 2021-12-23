@@ -67,7 +67,7 @@ export default function TaskCard({
   return (
     <li
       className={`task-card ${empty ? "task-card_transparent" : ""}`}
-      draggable={true}
+      draggable={!empty}
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       onDragStart={handleDragStart}
