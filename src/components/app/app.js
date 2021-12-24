@@ -30,6 +30,7 @@ export default function App() {
     if (currentDropCard.status && currentDropCard.status) {
       changeOrderCards();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentDragCard, currentDropCard]);
 
   const changeBreadCrumbs = (value) => {
