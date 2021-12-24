@@ -18,7 +18,7 @@ export default function TaskCard({
 }) {
   const handleCardClick = () => {
     onCardClick({ id, title, description, storyPoints, priority, status });
-    changeBreadCrumbs(title);
+    changeBreadCrumbs(`${id} ${title}`);
   };
 
   const handleDragOver = (e) => {
