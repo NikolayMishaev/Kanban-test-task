@@ -32,6 +32,7 @@ export default function TaskCard({
   };
 
   const handleDragStart = (e) => {
+          e.target.closest(".task-card").style.opacity = '.3'
     currentDragCard({
       id,
       title,
@@ -44,6 +45,7 @@ export default function TaskCard({
   };
 
   const handleDragEnd = (e) => {
+    e.target.closest(".task-card").style.opacity = '1'
     e.target.closest(".task-card").style.boxShadow =
       "0px 0px 1px rgba(26, 32, 36, 0.32), 0px 1px 2px rgba(91, 104, 113, 0.32)";
   };

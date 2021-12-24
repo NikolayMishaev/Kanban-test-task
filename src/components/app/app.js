@@ -28,8 +28,10 @@ export default function App() {
   const [currentBreadCrumbs, setCurrentBreadCrumbs] = useState("");
 
   useEffect(() => {
-    if (currentDropCard.status && currentDropCard.status) {
+    if (currentDragCard.id && currentDropCard.status) {
       changeOrderCards();
+    } else if (currentDropCard.status){
+      setCurrentDropCard({});
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentDragCard, currentDropCard]);
