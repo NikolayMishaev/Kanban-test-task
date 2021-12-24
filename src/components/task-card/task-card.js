@@ -27,12 +27,16 @@ export default function TaskCard({
   };
 
   const handleDragLeave = (e) => {
+    if (e.target.closest(".task-card_transparent")) {
+      e.target.style.boxShadow = "none";
+      return;
+    }
     e.target.closest(".task-card").style.boxShadow =
       "0px 0px 1px rgba(26, 32, 36, 0.32), 0px 1px 2px rgba(91, 104, 113, 0.32)";
   };
 
   const handleDragStart = (e) => {
-          e.target.closest(".task-card").style.opacity = '.3'
+    e.target.closest(".task-card").style.opacity = ".3";
     currentDragCard({
       id,
       title,
@@ -45,7 +49,7 @@ export default function TaskCard({
   };
 
   const handleDragEnd = (e) => {
-    e.target.closest(".task-card").style.opacity = '1'
+    e.target.closest(".task-card").style.opacity = "1";
     e.target.closest(".task-card").style.boxShadow =
       "0px 0px 1px rgba(26, 32, 36, 0.32), 0px 1px 2px rgba(91, 104, 113, 0.32)";
   };
@@ -61,7 +65,10 @@ export default function TaskCard({
       status,
       indexCard,
     });
-
+    if (e.target.closest(".task-card_transparent")) {
+      e.target.style.boxShadow = "none";
+      return;
+    }
     e.target.closest(".task-card").style.boxShadow =
       "0px 0px 1px rgba(26, 32, 36, 0.32), 0px 1px 2px rgba(91, 104, 113, 0.32)";
   };
