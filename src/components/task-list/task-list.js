@@ -14,7 +14,14 @@ export default function TaskList({
     <div className="task-list">
       <h2 className="task-list__title">{status}</h2>
       <ul className="task-list__list">
-        {cards.length ? (
+      <TaskCard
+            key={"zero"}
+            empty={true}
+            status={status}
+            currentDragCard={currentDragCard}
+            currentDropCard={currentDropCard}
+          />
+        {
           cards.map((i, c) => (
             <TaskCard
               key={i.id}
@@ -27,15 +34,7 @@ export default function TaskList({
               currentDropCard={currentDropCard}
             />
           ))
-        ) : (
-          <TaskCard
-            key={"zero"}
-            empty={true}
-            status={status}
-            currentDragCard={currentDragCard}
-            currentDropCard={currentDropCard}
-          />
-        )}
+}
       </ul>
     </div>
   );

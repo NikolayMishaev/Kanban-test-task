@@ -30,10 +30,10 @@ export default function App() {
   useEffect(() => {
     if (currentDragCard.id && currentDropCard.status) {
       changeOrderCards();
-    } else if (currentDropCard.status){
+    } else if (currentDropCard.status) {
       setCurrentDropCard({});
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentDragCard, currentDropCard]);
 
   const changeBreadCrumbs = (value) => {
@@ -140,12 +140,18 @@ export default function App() {
         }
         if (i.status === currentDropCard.status) {
           const currentCards = newCards || i.cards;
-          // const lastCard = currentDropCard.indexCard === currentCards.length-1 ? 1 : 0;
-          newCards = [
-            ...currentCards.slice(0, currentDropCard.indexCard),
-            currentDragCard,
-            ...currentCards.slice(currentDropCard.indexCard),
-          ];
+          if (currentCards.length && !currentDropCard.id) {
+            newCards = [
+              ...currentCards.slice(0, currentDropCard.indexCard),
+              currentDragCard,
+            ];
+          } else {
+            newCards = [
+              ...currentCards.slice(0, currentDropCard.indexCard),
+              currentDragCard,
+              ...currentCards.slice(currentDropCard.indexCard),
+            ];
+          }
           return { ...i, cards: [...newCards] };
         } else return i;
       })
