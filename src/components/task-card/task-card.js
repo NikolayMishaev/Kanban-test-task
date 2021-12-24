@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-import "./task-card.css";
+import './task-card.css';
 
 export default function TaskCard({
   id,
@@ -23,20 +23,20 @@ export default function TaskCard({
 
   const handleDragOver = (e) => {
     e.preventDefault();
-    e.target.closest(".task-card").style.boxShadow = "0 2px 2px red";
+    e.target.closest('.task-card').style.boxShadow = '0 2px 2px red';
   };
 
   const handleDragLeave = (e) => {
-    if (e.target.closest(".task-card_transparent")) {
-      e.target.style.boxShadow = "none";
+    if (e.target.closest('.task-card_transparent')) {
+      e.target.style.boxShadow = 'none';
       return;
     }
-    e.target.closest(".task-card").style.boxShadow =
-      "0px 0px 1px rgba(26, 32, 36, 0.32), 0px 1px 2px rgba(91, 104, 113, 0.32)";
+    e.target.closest('.task-card').style.boxShadow =
+      '0px 0px 1px rgba(26, 32, 36, 0.32), 0px 1px 2px rgba(91, 104, 113, 0.32)';
   };
 
   const handleDragStart = (e) => {
-    e.target.closest(".task-card").style.opacity = ".3";
+    e.target.closest('.task-card').style.opacity = '.3';
     currentDragCard({
       id,
       title,
@@ -49,9 +49,9 @@ export default function TaskCard({
   };
 
   const handleDragEnd = (e) => {
-    e.target.closest(".task-card").style.opacity = "1";
-    e.target.closest(".task-card").style.boxShadow =
-      "0px 0px 1px rgba(26, 32, 36, 0.32), 0px 1px 2px rgba(91, 104, 113, 0.32)";
+    e.target.closest('.task-card').style.opacity = '1';
+    e.target.closest('.task-card').style.boxShadow =
+      '0px 0px 1px rgba(26, 32, 36, 0.32), 0px 1px 2px rgba(91, 104, 113, 0.32)';
   };
 
   const handleDrop = (e) => {
@@ -65,17 +65,17 @@ export default function TaskCard({
       status,
       indexCard,
     });
-    if (e.target.closest(".task-card_transparent")) {
-      e.target.style.boxShadow = "none";
+    if (e.target.closest('.task-card_transparent')) {
+      e.target.style.boxShadow = 'none';
       return;
     }
-    e.target.closest(".task-card").style.boxShadow =
-      "0px 0px 1px rgba(26, 32, 36, 0.32), 0px 1px 2px rgba(91, 104, 113, 0.32)";
+    e.target.closest('.task-card').style.boxShadow =
+      '0px 0px 1px rgba(26, 32, 36, 0.32), 0px 1px 2px rgba(91, 104, 113, 0.32)';
   };
 
   return (
     <li
-      className={`task-card ${empty ? "task-card_transparent" : ""}`}
+      className={`task-card ${empty ? 'task-card_transparent' : ''}`}
       draggable={!empty}
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
@@ -87,9 +87,7 @@ export default function TaskCard({
         <h3 className="task-card__title">{title}</h3>
       </Link>
       <p className="task-card__description">{description}</p>
-      <div
-        className={`task-card__priority task-card__priority_type_${priority}`}
-      ></div>
+      <div className={`task-card__priority task-card__priority_type_${priority}`}></div>
       <p className="task-card__story-points">{storyPoints}</p>
       <p className="task-card__id">{id}</p>
     </li>

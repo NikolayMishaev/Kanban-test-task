@@ -1,22 +1,22 @@
-import { useState, useEffect } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
-import { nanoid } from "nanoid";
+import { useState, useEffect } from 'react';
+import { Route, Routes, useNavigate } from 'react-router-dom';
+import { nanoid } from 'nanoid';
 
-import "./app.css";
+import './app.css';
 
-import { DATA_BOARDS } from "../../utils/constants";
-import BreadCrumbs from "../bread-crumbs/bread-crumbs";
-import Title from "../title/title";
-import Form from "../form/form";
-import TaskList from "../task-list/task-list";
-import Button from "../button/button";
-import Card from "../card/card";
-import CreateCard from "../create-card/create-card";
+import { DATA_BOARDS } from '../../utils/constants';
+import BreadCrumbs from '../bread-crumbs/bread-crumbs';
+import Title from '../title/title';
+import Form from '../form/form';
+import TaskList from '../task-list/task-list';
+import Button from '../button/button';
+import Card from '../card/card';
+import CreateCard from '../create-card/create-card';
 
 export default function App() {
   const navigate = useNavigate();
 
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState('');
 
   const [currentDragCard, setCurrentDragCard] = useState({});
   const [currentDropCard, setCurrentDropCard] = useState({});
@@ -25,7 +25,7 @@ export default function App() {
 
   const [currentCard, setCurrentCard] = useState({});
 
-  const [currentBreadCrumbs, setCurrentBreadCrumbs] = useState("");
+  const [currentBreadCrumbs, setCurrentBreadCrumbs] = useState('');
 
   useEffect(() => {
     if (currentDragCard.id && currentDropCard.status) {
@@ -45,35 +45,25 @@ export default function App() {
   };
 
   const handleClickNewIssue = () => {
-    navigate("/new-issue");
-    setCurrentBreadCrumbs("New issue");
+    navigate('/new-issue');
+    setCurrentBreadCrumbs('New issue');
   };
 
-  const addNewCard = ({
-    id = nanoid(5),
-    title,
-    description,
-    priority,
-    storyPoints,
-    status = "to do",
-  }) => {
+  const addNewCard = ({ id = nanoid(5), title, description, priority, storyPoints, status = 'to do' }) => {
     setData((state) =>
       state.map((i) => {
         if (i.status === status) {
           return {
             ...i,
-            cards: [
-              ...i.cards,
-              { id, title, description, priority, storyPoints },
-            ],
+            cards: [...i.cards, { id, title, description, priority, storyPoints }],
           };
         } else return i;
       })
     );
-    changeBreadCrumbs("");
+    changeBreadCrumbs('');
   };
 
-  const handleSearchValue = (searchValue) => {
+  const handleSearchValue = (searchValue = '') => {
     setSearchValue(searchValue.toLowerCase());
   };
 
@@ -83,9 +73,7 @@ export default function App() {
         id: i.id,
         status: i.status,
         cards: i.cards.filter(
-          (j) =>
-            j.id.toLowerCase().includes(searchValue) ||
-            j.title.toLowerCase().includes(searchValue)
+          (j) => j.id.toLowerCase().includes(searchValue) || j.title.toLowerCase().includes(searchValue)
         ),
       }));
     } else return data;
@@ -99,7 +87,7 @@ export default function App() {
         } else return i;
       })
     );
-    changeBreadCrumbs("");
+    changeBreadCrumbs('');
   };
 
   const editCard = (card) => {
@@ -111,14 +99,12 @@ export default function App() {
     setData((state) =>
       state.map((i) => {
         if (i.status === card.status) {
-          const newCards = i.cards.map((j) =>
-            j.id === card.id ? { ...card } : j
-          );
+          const newCards = i.cards.map((j) => (j.id === card.id ? { ...card } : j));
           return { ...i, cards: newCards };
         } else return i;
       })
     );
-    changeBreadCrumbs("");
+    changeBreadCrumbs('');
   };
 
   const changeOrderCards = () => {
@@ -141,10 +127,7 @@ export default function App() {
         if (i.status === currentDropCard.status) {
           const currentCards = newCards || i.cards;
           if (currentCards.length && !currentDropCard.id) {
-            newCards = [
-              ...currentCards.slice(0, currentDropCard.indexCard),
-              currentDragCard,
-            ];
+            newCards = [...currentCards.slice(0, currentDropCard.indexCard), currentDragCard];
           } else {
             newCards = [
               ...currentCards.slice(0, currentDropCard.indexCard),
@@ -164,10 +147,7 @@ export default function App() {
 
   return (
     <main className="App">
-      <BreadCrumbs
-        currentBreadCrumbs={currentBreadCrumbs}
-        changeBreadCrumbs={changeBreadCrumbs}
-      />
+      <BreadCrumbs currentBreadCrumbs={currentBreadCrumbs} changeBreadCrumbs={changeBreadCrumbs} />
       <Routes>
         <Route
           path="/"
@@ -175,12 +155,7 @@ export default function App() {
             <>
               <section className="heading">
                 <Title title="Issue Boards" />
-                <Button
-                  handleClick={handleClickNewIssue}
-                  name="New issue"
-                  type="button"
-                  className="heading__button"
-                />
+                <Button handleClick={handleClickNewIssue} name="New issue" type="button" className="heading__button" />
               </section>
               <section className="search">
                 <Form place="search" handleSearchValue={handleSearchValue} />
@@ -200,22 +175,9 @@ export default function App() {
             </>
           }
         ></Route>
-        <Route
-          path="/card"
-          element={
-            <Card {...currentCard} changeBreadCrumbs={changeBreadCrumbs} />
-          }
-        />
-        <Route
-          path="/new-issue"
-          element={<CreateCard newDataCard={addNewCard} />}
-        />
-        <Route
-          path="/edit-issue"
-          element={
-            <CreateCard newDataCard={editCard} currentCard={currentCard} />
-          }
-        />
+        <Route path="/card" element={<Card {...currentCard} changeBreadCrumbs={changeBreadCrumbs} />} />
+        <Route path="/new-issue" element={<CreateCard newDataCard={addNewCard} />} />
+        <Route path="/edit-issue" element={<CreateCard newDataCard={editCard} currentCard={currentCard} />} />
       </Routes>
     </main>
   );
