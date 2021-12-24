@@ -1,6 +1,6 @@
 # Kanban
 ***
-[ссылка на gh-pages](https://nikolaymishaev.github.io/Kanban-test-task/build/index.html)
+<!-- [ссылка на gh-pages](https://nikolaymishaev.github.io/Kanban-test-task/) -->
 
 ## Описание
 Выполнение тестового задания по созданию доски задач
