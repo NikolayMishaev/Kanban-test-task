@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
+import { nanoid } from "nanoid";
 
 import "./app.css";
 
@@ -47,7 +48,7 @@ export default function App() {
   };
 
   const addNewCard = ({
-    id = Math.floor(Math.random() * 1000000) + "",
+    id = nanoid(5),
     title,
     description,
     priority,
