@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid';
 
 import './app.css';
 
-import { DATA_BOARDS } from '../../utils/constants';
+import { DATA_BOARDS, ROUTES } from '../../utils/constants';
 import BreadCrumbs from '../bread-crumbs/bread-crumbs';
 import Title from '../title/title';
 import Form from '../form/form';
@@ -45,7 +45,7 @@ export default function App() {
   };
 
   const handleClickNewIssue = () => {
-    navigate('/new-issue');
+    navigate(ROUTES.addCard);
     setCurrentBreadCrumbs('New issue');
   };
 
@@ -150,7 +150,7 @@ export default function App() {
       <BreadCrumbs currentBreadCrumbs={currentBreadCrumbs} changeBreadCrumbs={changeBreadCrumbs} />
       <Routes>
         <Route
-          path="/"
+          path={ROUTES.root}
           element={
             <>
               <section className="heading">
@@ -175,9 +175,9 @@ export default function App() {
             </>
           }
         ></Route>
-        <Route path="/card" element={<Card {...currentCard} changeBreadCrumbs={changeBreadCrumbs} />} />
-        <Route path="/new-issue" element={<CreateCard newDataCard={addNewCard} />} />
-        <Route path="/edit-issue" element={<CreateCard newDataCard={editCard} currentCard={currentCard} />} />
+        <Route path={ROUTES.card} element={<Card {...currentCard} changeBreadCrumbs={changeBreadCrumbs} />} />
+        <Route path={ROUTES.addCard} element={<CreateCard newDataCard={addNewCard} />} />
+        <Route path={ROUTES.editCard} element={<CreateCard newDataCard={editCard} currentCard={currentCard} />} />
       </Routes>
     </main>
   );

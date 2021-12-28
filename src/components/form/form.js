@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import './form.css';
 
 import Button from '../button/button';
+import { ROUTES } from '../../utils/constants';
 
 export default function Form({ place, newDataCard, currentCard = {}, handleSearchValue }) {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ export default function Form({ place, newDataCard, currentCard = {}, handleSearc
     if (e.priority === 'Priority') e.priority = '';
     if (e.status === 'Status') e.status = 'to do';
     newDataCard({ ...e, id: currentCard.id });
-    navigate('/');
+    navigate(ROUTES.root);
   };
 
   const handleFormSubmitSearch = (e) => {

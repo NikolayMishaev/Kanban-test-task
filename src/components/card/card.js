@@ -2,13 +2,14 @@ import { useNavigate } from 'react-router-dom';
 
 import './card.css';
 
+import { ROUTES } from '../../utils/constants';
 import Button from '../button/button';
 
 export default function Card({ title, description, storyPoints, priority, status, changeBreadCrumbs }) {
   const navigate = useNavigate();
 
   const handleClickButton = () => {
-    navigate('/edit-issue');
+    navigate(ROUTES.editCard);
     changeBreadCrumbs('Edit issue');
   };
 

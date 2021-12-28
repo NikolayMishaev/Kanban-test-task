@@ -126,4 +126,11 @@ const DATA_BOARDS = [
   },
 ];
 
-export { DATA_BOARDS };
+const ROUTES = {
+  root: '/',
+  card: '/card',
+  addCard: '/new-issue',
+  editCard: '/edit-issue',
+};
+
+export { DATA_BOARDS, ROUTES };

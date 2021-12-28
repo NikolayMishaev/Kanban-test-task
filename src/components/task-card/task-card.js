@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 
 import './task-card.css';
 
+import { ROUTES } from '../../utils/constants';
+
 export default function TaskCard({
   id,
   title,
@@ -83,7 +85,7 @@ export default function TaskCard({
       onDragEnd={handleDragEnd}
       onDrop={handleDrop}
     >
-      <Link className="task-card__link" to="/card" onClick={handleCardClick}>
+      <Link className="task-card__link" to={ROUTES.card} onClick={handleCardClick}>
         <h3 className="task-card__title">{title}</h3>
       </Link>
       <p className="task-card__description">{description}</p>
