@@ -2,6 +2,21 @@
   padding: 16px 0;
 }
 
+.form__error-message {
+  position: absolute;
+  color: red;
+  top: 28px;
+  left: 0;
+  font-size: 11px;
+  line-height: 9px;
+  margin: 0;
+  font-weight: 500;
+}
+
+.form__label {
+  position: relative;
+}
+
 .form__input {
   margin-right: 8px;
   background: #ffffff;
@@ -14,6 +29,7 @@
   line-height: 24px;
   letter-spacing: -0.006em;
   color: #252c32;
+  transition: all 1s;
 }
 
 .form__input::placeholder {
@@ -23,6 +39,15 @@
   line-height: 24px;
   letter-spacing: -0.006em;
   color: #9aa6ac;
+}
+
+.form__input_error {
+  border-color: red;
+  color: red;
+}
+
+.form__input_error::placeholder {
+  color: red;
 }
 
 .search__input {
@@ -45,6 +70,7 @@
   line-height: 24px;
   letter-spacing: -0.006em;
   color: #252c32;
+  transition: all 1s;
 }
 
 .form__textarea::placeholder {
@@ -54,6 +80,11 @@
   line-height: 24px;
   letter-spacing: -0.006em;
   color: #9aa6ac;
+}
+
+.form__textarea_error {
+  border-color: red !important;
+  color: red;
 }
 
 .form__option {

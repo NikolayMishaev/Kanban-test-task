@@ -49,7 +49,7 @@ export default function App() {
     setCurrentBreadCrumbs('New issue');
   };
 
-  const addNewCard = ({ id = nanoid(5), title, description, priority, storyPoints, status = 'to do' }) => {
+  const addNewCard = ({ id = nanoid(5), title, description, priority, storyPoints, status }) => {
     setData((state) =>
       state.map((i) => {
         if (i.status === status) {

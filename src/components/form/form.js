@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import React from 'react';
+import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
 import './form.css';
@@ -8,64 +9,57 @@ import Button from '../button/button';
 export default function Form({ place, newDataCard, currentCard = {}, handleSearchValue }) {
   const navigate = useNavigate();
 
-  const [isValid, setIsValid] = useState(currentCard.title || false);
-
-  const [formValues, setFormValues] = useState({
-    ...currentCard,
-  });
-
-  const handleFields = (e) => {
-    const { name, value } = e.target;
-    if (name === 'storyPoints') {
-      if (value < 1 || value > 10) return;
-    }
-    setFormValues({ ...formValues, [name]: value });
-    setIsValid(e.target.closest('form').checkValidity());
-  };
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm({ mode: 'onChange' });
 
   const handleFormSubmitCreateCard = (e) => {
-    e.preventDefault();
-    newDataCard(formValues);
+    if (e.priority === 'Priority') e.priority = '';
+    if (e.status === 'Status') e.status = 'to do';
+    newDataCard({ ...e, id: currentCard.id });
     navigate('/');
   };
 
   const handleFormSubmitSearch = (e) => {
-    e.preventDefault();
-    handleSearchValue(formValues.search);
+    handleSearchValue(e.search);
   };
 
   return (
     <>
       {place === 'search' && (
-        <form className="form" onSubmit={handleFormSubmitSearch}>
-          <input
-            className="form__input search__input"
-            type="text"
-            name="search"
-            value={formValues.search || ''}
-            onChange={handleFields}
-          ></input>
+        <form className="form" onSubmit={handleSubmit(handleFormSubmitSearch)}>
+          <input className="form__input search__input" type="text" {...register('search')}></input>
           <Button name="Search" className="search__button" type="submit" />
         </form>
       )}
       {place === 'create-card' && (
-        <form className="form create-card__form" onSubmit={handleFormSubmitCreateCard}>
-          <input
-            className="form__input create-card__input"
-            type="text"
-            required
-            placeholder="Title *"
-            onChange={handleFields}
-            name="title"
-            maxLength={100}
-            value={formValues.title || ''}
-          ></input>
+        <form className="form create-card__form" onSubmit={handleSubmit(handleFormSubmitCreateCard)}>
+          <label className="form__label">
+            <input
+              className={`form__input create-card__input ${errors?.title?.message && 'form__input_error'}`}
+              type="text"
+              placeholder="Title *"
+              defaultValue={currentCard.title || ''}
+              {...register('title', {
+                required: { value: true, message: 'Это поле обязательно к заполнению !' },
+                maxLength: { value: 100, message: 'Максимальная длина не должна превышать 100 символов !' },
+              })}
+            ></input>
+            <p className="form__error-message">{errors?.title?.message}</p>
+          </label>
           <select
-            className={`form__select create-card__select ${formValues.priority ? 'create-card__select_active' : ''}`}
-            // defaultValue={"Priority"}
-            onChange={handleFields}
-            name="priority"
-            value={formValues.priority || 'Priority'}
+            className={`form__select create-card__select ${
+              currentCard.priority
+                ? 'create-card__select_active'
+                : !watch('priority') || watch('priority') === 'Priority'
+                ? ''
+                : 'create-card__select_active'
+            }`}
+            defaultValue={currentCard.priority || 'Priority'}
+            {...register('priority')}
           >
             <option className="form__option create-card__option" defaultValue="" disabled hidden>
               Priority
@@ -86,22 +80,32 @@ export default function Form({ place, newDataCard, currentCard = {}, handleSearc
               critical
             </option>
           </select>
-          <input
-            className="form__input create-card__input create-card__input_narrow"
-            type="number"
-            min="1"
-            max="10"
-            placeholder="Story points"
-            onChange={handleFields}
-            name="storyPoints"
-            value={formValues.storyPoints || ''}
-          ></input>
+          <label className="form__label">
+            <input
+              className={`form__input create-card__input create-card__input_narrow ${
+                errors?.storyPoints?.message && 'form__input_error'
+              }`}
+              type="number"
+              placeholder="Story points"
+              defaultValue={currentCard.storyPoints || ''}
+              {...register('storyPoints', {
+                min: { value: 1, message: 'Значение не должно быть меньше 1 !' },
+                max: { value: 10, message: 'Значение не должно быть больше 10 !' },
+                pattern: { value: /^[1-9]/, message: 'Значение не может начинаться с 0 !' },
+              })}
+            ></input>
+            <p className="form__error-message">{errors?.storyPoints?.message}</p>
+          </label>
           <select
-            className={`form__select create-card__select ${formValues.status ? 'create-card__select_active' : ''}`}
-            // defaultValue={"Status"}
-            onChange={handleFields}
-            name="status"
-            value={formValues.status || 'Status'}
+            className={`form__select create-card__select ${
+              currentCard.status
+                ? 'create-card__select_active'
+                : !watch('status') || watch('status') === 'Status'
+                ? ''
+                : 'create-card__select_active'
+            }`}
+            defaultValue={currentCard.status || 'Status'}
+            {...register('status')}
           >
             <option className="form__option create-card__option" defaultValue="" disabled hidden>
               Status
@@ -119,15 +123,20 @@ export default function Form({ place, newDataCard, currentCard = {}, handleSearc
               done
             </option>
           </select>
-          <textarea
-            className="form__textarea create-card__textarea"
-            placeholder="Description"
-            onChange={handleFields}
-            name="description"
-            maxLength={300}
-            value={formValues.description || ''}
-          ></textarea>
-          <Button isValid={isValid} name="Save" className="create-card__button" type="submit" />
+          <label className="form__label">
+            <textarea
+              className={`form__textarea create-card__textarea ${
+                errors?.description?.message && 'form__textarea_error'
+              }`}
+              placeholder="Description"
+              defaultValue={currentCard.description || ''}
+              {...register('description', {
+                maxLength: { value: 300, message: 'Максимальная длина не должна превышать 300 символов !' },
+              })}
+            ></textarea>
+            <p className="form__error-message">{errors?.description?.message}</p>
+          </label>
+          <Button isValid={errors} name="Save" className="create-card__button" type="submit" />
         </form>
       )}
     </>
