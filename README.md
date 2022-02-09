@@ -5,7 +5,7 @@
 - [ссылка на задание](https://disk.yandex.ru/i/naUl_QNZPZ-g2w)
 
 ## Описание
-- выполнение тестового задания по созданию доски задач на Реакт с использоваинем механизма drag-and-drop
+- выполнение тестового задания по созданию доски задач на Реакт с использованием механизма drag-and-drop
 
 ## Скриншоты
 ![](https://github.com/NikolayMishaev/Kanban-test-task/raw/main/src/images/readme/01.jpg)
