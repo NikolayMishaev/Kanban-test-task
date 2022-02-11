@@ -1,8 +1,8 @@
 # Kanban
 ***
-- ссылка на приложение ( находится в процессе разработки)
-- [ссылка на макет](https://www.figma.com/file/6JwARpWyxCEfUnnGBPZErg/9-Web-Interface-Screens-(Stratum-UI)-(Community)?node-id=302%3A2)
-- [ссылка на задание](https://disk.yandex.ru/i/naUl_QNZPZ-g2w)
+- деплой (находится в процессе разработки)
+- [на макет](https://www.figma.com/file/6JwARpWyxCEfUnnGBPZErg/9-Web-Interface-Screens-(Stratum-UI)-(Community)?node-id=302%3A2)
+- [на задание](https://disk.yandex.ru/i/naUl_QNZPZ-g2w)
 
 ## Описание
 - выполнение тестового задания по созданию доски задач на Реакт с использованием механизма drag-and-drop
