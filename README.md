@@ -1,21 +1,25 @@
-# Kanban
+# Приложение «Kanban»
 ***
-- деплой (находится в процессе разработки)
-- [на макет](https://www.figma.com/file/6JwARpWyxCEfUnnGBPZErg/9-Web-Interface-Screens-(Stratum-UI)-(Community)?node-id=302%3A2)
-- [на задание](https://disk.yandex.ru/i/naUl_QNZPZ-g2w)
+- [деплой](https://kanban-nmishaev.herokuapp.com/)
+- [макет](https://www.figma.com/file/6JwARpWyxCEfUnnGBPZErg/9-Web-Interface-Screens-(Stratum-UI)-(Community)?node-id=302%3A2)
+- [задание](https://disk.yandex.ru/i/naUl_QNZPZ-g2w)
 
 ## Описание
-- выполнение тестового задания по созданию доски задач на Реакт с использованием механизма drag-and-drop
+- доска задач с использованием механизма drag-and-drop
 
 ## Скриншоты
 ![](https://github.com/NikolayMishaev/Kanban-test-task/raw/main/src/images/readme/01.jpg)
 ![](https://github.com/NikolayMishaev/Kanban-test-task/raw/main/src/images/readme/02.jpg)
 ![](https://github.com/NikolayMishaev/Kanban-test-task/raw/main/src/images/readme/03.jpg)
 
+## Технологии
+  - React
+  - библиотеки(react-router-dom V6, react-hook-form)
+
 ## Функциональность
-- добавление, редактирование, удаление тасков
+- CRUD тасков
 - маршрутизация
 - перетаскивание тикетов с помощью drag-and-drop без использования сторонних библиотек
 
 ## Планы по доработке проекта
-- задеплоить приложение на сервере
+- задеплоить приложение на сервере (выполнено)
